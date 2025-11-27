@@ -14,7 +14,7 @@ import com.gogrocery.grocygo.ui.theme.GrocyGoTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
+
 
         setContent {
             GrocyGoTheme {
