@@ -50,7 +50,7 @@ fun HomePageUserScreen() {
         ) {
 
             item {
-                HomeHeader(name = "Daniel")
+                HomeHeader(name = "Gilang")
                 Spacer(modifier = Modifier.height(24.dp))
 
                 CustomSearchBar()
@@ -94,7 +94,7 @@ fun HomePageUserScreen() {
                     imageResId = com.gogrocery.grocygo.R.drawable.image_grocery_placeholder,
                     productName = "Fresh Cabbage $index",
                     storeName = "Lovy Grocery",
-                    price = "$8"
+                    price = 8
                 )
                 Spacer(modifier = Modifier.height(12.dp))
             }

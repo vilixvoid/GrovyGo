@@ -26,6 +26,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gogrocery.grocygo.R
@@ -64,8 +65,8 @@ fun SpecialPromoCard() {
                 Column(
                     modifier = Modifier.weight(1f).padding(start = 16.dp)
                 ) {
-                    Text("Special Deal for", color = Color.White.copy(alpha = 0.8f), fontSize = 14.sp)
-                    Text("December", color = Color.White, fontSize = 20.sp)
+                    Text("Special Deal for", color = Color.White.copy(alpha = 0.8f), fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                    Text("December", color = Color.White, fontSize = 20.sp, fontWeight = FontWeight.Bold)
                     Spacer(modifier = Modifier.height(8.dp))
 
                     Button(

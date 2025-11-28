@@ -28,8 +28,23 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.gogrocery.grocygo.R
+import com.gogrocery.grocygo.data.model.PopularGroceryModel
 import com.gogrocery.grocygo.ui.theme.GhostWhite
 import com.gogrocery.grocygo.ui.theme.VerdoGreen
+
+val popularGroceryList = listOf(
+    PopularGroceryModel(R.drawable.cabbage_fresh, "Fresh Cabbage", "Lovy Grocery", 8),
+    PopularGroceryModel(R.drawable.cucumber_fresh, "Fresh Cucumber", "Cloudy Grocery", 10),
+    PopularGroceryModel(R.drawable.lettuce_fresh, "Fresh Lettuce", "Circlo Grocery", 6),
+    PopularGroceryModel(R.drawable.cabbage_haty, "Fresh Cabbage", "Haty Grocery", 11),
+    PopularGroceryModel(
+        R.drawable.cabbage_green_fresh,
+        "Fresh Green Cabbage",
+        "Recto Grocery",
+        13
+    )
+)
 
 @Composable
 fun PopularGroceryCard(
@@ -37,7 +52,7 @@ fun PopularGroceryCard(
     imageResId: Int,
     productName: String,
     storeName: String,
-    price: String,
+    price: Int,
     onClick: () -> Unit = {}
 ) {
     Card(
@@ -85,7 +100,7 @@ fun PopularGroceryCard(
             }
 
             Text(
-                text = price,
+                text = "$${price}",
                 style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Bold),
                 color = VerdoGreen, // ← pakai dari theme
                 fontSize = 18.sp

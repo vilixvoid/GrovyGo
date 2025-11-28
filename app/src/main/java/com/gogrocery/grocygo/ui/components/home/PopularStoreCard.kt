@@ -17,7 +17,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -62,14 +61,8 @@ fun PopularStoreCard(
                 painter = painterResource(id = iconRes),
                 contentDescription = null,
                 tint = Color.Unspecified,
-                modifier = Modifier
-                    .size(80.dp)
-                    .graphicsLayer(
-                        scaleX = 2.3f,   // zoom 130%
-                        scaleY = 2.3f
-                    )
+                modifier = Modifier.size(50.dp)
             )
-
 
             Spacer(modifier = Modifier.height(12.dp))
 

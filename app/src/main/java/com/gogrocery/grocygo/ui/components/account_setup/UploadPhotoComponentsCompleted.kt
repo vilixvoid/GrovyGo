@@ -100,7 +100,7 @@ fun ProfilePhotoArea(
                 .size(40.dp)
                 .align(Alignment.BottomEnd)
                 .offset(x = 5.dp, y = 5.dp),
-            containerColor = GreenPrimary,
+            containerColor = VerdoGreen,
             shape = CircleShape
         ) {
             Icon(
