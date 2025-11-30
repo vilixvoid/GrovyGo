@@ -83,7 +83,7 @@ fun FilterGroceryScreen(
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Text(
-                    text = "Popular Store",
+                    text = "Find your grocery",
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                     color = Color.Black
                 )
