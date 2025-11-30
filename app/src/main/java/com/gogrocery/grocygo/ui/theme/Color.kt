@@ -14,7 +14,8 @@ val VerdoGreen = Color(0xFF1BC078)
 val LightVerdoGreen = VerdoGreen.copy(alpha = 0.1f)
 val GrayIcon = Color.Gray
 
-val GhostWhite = Color(0xFFF8F8FF)
+val White = Color(0xFCFCFC)
+val GhostWhite = Color(0xFFF8F8F)
 val AliceBlue = Color(0xFFF0F8FF)
 val MintCream = Color(0xFFF5FFFA)
 val Honeydew = Color(0xFFF0FFF0)
