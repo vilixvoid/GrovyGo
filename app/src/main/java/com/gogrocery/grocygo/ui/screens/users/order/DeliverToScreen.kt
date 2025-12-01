@@ -33,27 +33,20 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.gogrocery.grocygo.R
-import com.gogrocery.grocygo.data.model.OrderItem
-import com.gogrocery.grocygo.ui.components.home.CustomSearchBar
+import com.gogrocery.grocygo.data.model.AddressItem
+import com.gogrocery.grocygo.data.model.mockAddresses
+import com.gogrocery.grocygo.ui.components.order.AddressCard
 import com.gogrocery.grocygo.ui.components.order.CheckoutSummary
-import com.gogrocery.grocygo.ui.components.order.OrderItemCard
 import com.gogrocery.grocygo.ui.theme.VerdoGreen
-
-val mockOrderItems = listOf(
-    OrderItem("Fresh Cabbage", "Lovy Grocery", 10, 1, R.drawable.cabbage_fresh),
-    OrderItem("Fresh Cabbage", "Recto Grocery", 10, 1, R.drawable.cabbage_green_fresh),
-    OrderItem("Fresh Cabbage", "Circlo Grocery", 12, 1, R.drawable.cabbage_haty)
-)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OrderDetailScreen(
-    onBackClick: () -> Unit = {},
-    onSearchClick: () -> Unit = {}
+fun DeliverToScreen(
+    addresses: List<AddressItem> = mockAddresses,
+    onBack: () -> Unit = {},
+    onNext: () -> Unit = {}
 ) {
-
-    var search by remember { mutableStateOf("") }
+    var selectedAddress by remember { mutableStateOf(addresses.first().address) }
 
     Scaffold(
         topBar = {
@@ -66,7 +59,7 @@ fun OrderDetailScreen(
             ) {
 
                 IconButton(
-                    onClick = onBackClick,
+                    onClick = onBack,
                     modifier = Modifier
                         .size(36.dp)
                         .background(VerdoGreen.copy(alpha = 0.1f), RoundedCornerShape(10.dp))
@@ -81,7 +74,7 @@ fun OrderDetailScreen(
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Text(
-                    text = "Order details",
+                    text = "Deliver to",
                     style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
                     color = Color.Black
                 )
@@ -101,32 +94,25 @@ fun OrderDetailScreen(
                 )
             }
         }
-
-    ) { padding ->
-
+    ) { paddingValues ->
         Column(
             modifier = Modifier
-                .padding(padding)
+                .padding(paddingValues)
                 .fillMaxSize()
                 .background(Color.White)
         ) {
-
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp)
-            ) {
-                CustomSearchBar()
-            }
-
             LazyColumn(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                    .padding(horizontal = 16.dp, vertical = 24.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
             ) {
-                items(mockOrderItems) { item ->
-                    OrderItemCard(item)
+                items(addresses) { item ->
+                    AddressCard(
+                        item = item,
+                        isSelected = selectedAddress == item.address,
+                        onClick = { selectedAddress = item.address }
+                    )
                 }
             }
         }
@@ -135,6 +121,6 @@ fun OrderDetailScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewOrderDetailScreen() {
-    OrderDetailScreen()
+fun PreviewDeliverToScreen() {
+    DeliverToScreen()
 }
