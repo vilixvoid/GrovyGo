@@ -20,3 +20,6 @@ val AliceBlue = Color(0xFFF0F8FF)
 val MintCream = Color(0xFFF5FFFA)
 val Honeydew = Color(0xFFF0FFF0)
 val Gainsboro = Color(0xFFDCDCDC)
+
+// Yellow color for points
+val PointYellow = Color(0xFFFFC107)
