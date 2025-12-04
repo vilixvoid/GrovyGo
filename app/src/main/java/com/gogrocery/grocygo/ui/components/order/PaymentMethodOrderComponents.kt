@@ -64,7 +64,7 @@ fun PaymentCard(
                         contentDescription = method.name,
                         modifier = Modifier
                             .width(70.dp)
-                            .height(30.dp)
+                            .height(50.dp)
                             .clip(RoundedCornerShape(4.dp))
                     )
                 }

@@ -1,12 +1,11 @@
-package com.gogrocery.grocygo.ui.screens.users.order
+package com.gogrocery.grocygo.ui.screens.users.history
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -24,37 +23,22 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.gogrocery.grocygo.R
-import com.gogrocery.grocygo.data.model.OrderItem
+import com.gogrocery.grocygo.data.model.mockOrders
+import com.gogrocery.grocygo.ui.components.history.StoreListItem
 import com.gogrocery.grocygo.ui.components.home.CustomSearchBar
-import com.gogrocery.grocygo.ui.components.order.CheckoutSummary
-import com.gogrocery.grocygo.ui.components.order.OrderItemCard
+import com.gogrocery.grocygo.ui.components.navigation.CustomBottomNavigationBar
 import com.gogrocery.grocygo.ui.theme.VerdoGreen
-
-val mockOrderItems = listOf(
-    OrderItem("Fresh Cabbage", "Lovy Grocery", 10, 1, R.drawable.cabbage_fresh),
-    OrderItem("Fresh Cabbage", "Recto Grocery", 10, 1, R.drawable.cabbage_green_fresh),
-    OrderItem("Fresh Cabbage", "Circlo Grocery", 12, 1, R.drawable.cabbage_haty)
-)
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun OrderDetailScreen(
-    onBackClick: () -> Unit = {},
-    onSearchClick: () -> Unit = {}
+fun OrderHistoryScreen(
+    onBackClick: () -> Unit = {}
 ) {
-
-    var search by remember { mutableStateOf("") }
 
     Scaffold(
         topBar = {
@@ -62,7 +46,7 @@ fun OrderDetailScreen(
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color.White)
-                    .padding(top = 24.dp, start = 24.dp, end = 24.dp, bottom = 24.dp),
+                    .padding(24.dp),
                 verticalAlignment = Alignment.CenterVertically
             ) {
 
@@ -82,33 +66,21 @@ fun OrderDetailScreen(
                 Spacer(modifier = Modifier.width(16.dp))
 
                 Text(
-                    text = "Order details",
-                    style = MaterialTheme.typography.headlineSmall.copy(fontWeight = FontWeight.Bold),
+                    "Popular Store",
+                    style = MaterialTheme.typography.headlineSmall,
                     color = Color.Black
                 )
             }
         },
         bottomBar = {
-            Box(
-                modifier = Modifier
-                    .padding(horizontal = 12.dp)
-                    .padding(bottom = 12.dp)
-                    .fillMaxWidth()
-            ) {
-                CheckoutSummary(
-                    subtotal = 32,
-                    deliveryCharge = 5,
-                    discount = 10
-                )
-            }
+            CustomBottomNavigationBar()
         }
-
-    ) { padding ->
+    ) { paddingValues ->
 
         Column(
             modifier = Modifier
-                .padding(padding)
                 .fillMaxSize()
+                .padding(paddingValues)
                 .background(Color.White)
         ) {
 
@@ -121,22 +93,22 @@ fun OrderDetailScreen(
             }
 
             LazyColumn(
-                modifier = Modifier
-                    .fillMaxHeight()
-                    .fillMaxWidth()
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp)
+                modifier = Modifier.fillMaxWidth(),
+                contentPadding = PaddingValues(vertical = 8.dp)
             ) {
-                items(mockOrderItems) { item ->
-                    OrderItemCard(item)
+                items(mockOrders) { order ->
+                    StoreListItem(order)
                 }
             }
+
+        }
         }
     }
-}
 
 @Preview(showBackground = true)
 @Composable
-fun PreviewOrderDetailScreen() {
-    OrderDetailScreen()
+fun OrderHistoryScreenPreview() {
+    MaterialTheme {
+        OrderHistoryScreen()
+    }
 }
