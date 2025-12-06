@@ -29,16 +29,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.gogrocery.grocygo.R
-import com.gogrocery.grocygo.data.model.PopularGroceryModel
+import com.gogrocery.grocygo.data.model.GroceryModel
 import com.gogrocery.grocygo.ui.theme.GhostWhite
 import com.gogrocery.grocygo.ui.theme.VerdoGreen
 
 val popularGroceryList = listOf(
-    PopularGroceryModel(R.drawable.cabbage_fresh, "Fresh Cabbage", "Lovy Grocery", 8),
-    PopularGroceryModel(R.drawable.cucumber_fresh, "Fresh Cucumber", "Cloudy Grocery", 10),
-    PopularGroceryModel(R.drawable.lettuce_fresh, "Fresh Lettuce", "Circlo Grocery", 6),
-    PopularGroceryModel(R.drawable.cabbage_haty, "Fresh Cabbage", "Haty Grocery", 11),
-    PopularGroceryModel(
+    GroceryModel(R.drawable.cabbage_fresh, "Fresh Cabbage", "Lovy Grocery", 8),
+    GroceryModel(R.drawable.cucumber_fresh, "Fresh Cucumber", "Cloudy Grocery", 10),
+    GroceryModel(R.drawable.lettuce_fresh, "Fresh Lettuce", "Circlo Grocery", 6),
+    GroceryModel(R.drawable.cabbage_haty, "Fresh Cabbage", "Haty Grocery", 11),
+    GroceryModel(
         R.drawable.cabbage_green_fresh,
         "Fresh Green Cabbage",
         "Recto Grocery",

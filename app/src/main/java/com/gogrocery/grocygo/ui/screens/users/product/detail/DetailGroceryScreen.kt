@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -29,17 +28,17 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.gogrocery.grocygo.data.model.StoreDetail
-import com.gogrocery.grocygo.data.model.mockStoreDetail
-import com.gogrocery.grocygo.ui.components.product.StoreChip
+import com.gogrocery.grocygo.data.model.GroceryDetail
+import com.gogrocery.grocygo.data.model.mockGroceryDetail
+import com.gogrocery.grocygo.ui.components.product.GroceryChip
+import com.gogrocery.grocygo.ui.components.product.GroceryIconClickRow
+import com.gogrocery.grocygo.ui.components.product.GroceryInfoRow
 import com.gogrocery.grocygo.ui.components.product.StoreHeaderImage
-import com.gogrocery.grocygo.ui.components.product.StoreInfoRow
-import com.gogrocery.grocygo.ui.components.product.StoreProductItem
 import com.gogrocery.grocygo.ui.components.product.TestimonialCard
 import com.gogrocery.grocygo.ui.theme.VerdoGreen
 
 @Composable
-fun DetailStoreScreen(store: StoreDetail) {
+fun DetailGroceryScreen(grocery: GroceryDetail) {
 
     val scrollState = rememberScrollableState { delta -> delta }
 
@@ -68,58 +67,33 @@ fun DetailStoreScreen(store: StoreDetail) {
         ) {
 
             Column {
-
-                StoreChip(label = "Popular")
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    GroceryChip(label = "Popular")
+                    GroceryIconClickRow()
+                }
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    store.name,
+                    grocery.name,
                     fontSize = 22.sp,
                     fontWeight = FontWeight.Bold
                 )
 
                 Spacer(modifier = Modifier.height(10.dp))
 
-                StoreInfoRow(store.distance, store.rating)
+                GroceryInfoRow(grocery.distance, grocery.rating)
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Text(
-                    store.description,
+                    grocery.description,
                     fontSize = 14.sp,
                     color = Color.DarkGray
                 )
-
-                Spacer(modifier = Modifier.height(24.dp))
-
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        "Popular Grocery",
-                        fontSize = 18.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                    Text(
-                        "See all",
-                        color = VerdoGreen,
-                        fontSize = 14.sp
-                    )
-                }
-
-                Spacer(modifier = Modifier.height(12.dp))
-
-                LazyRow {
-                    items(store.groceries) { item ->
-                        StoreProductItem(
-                            name = item.name,
-                            price = item.price,
-                            imageRes = item.imageRes
-                        )
-                    }
-                }
 
                 Spacer(modifier = Modifier.height(24.dp))
 
@@ -138,8 +112,11 @@ fun DetailStoreScreen(store: StoreDetail) {
                         fontSize = 14.sp
                     )
                 }
+
+                Spacer(modifier = Modifier.height(24.dp))
+
                 LazyColumn {
-                    items(store.testimonials) { item ->
+                    items(grocery.testimonials) { item ->
                         TestimonialCard(item = item)
                     }
                 }
@@ -150,6 +127,6 @@ fun DetailStoreScreen(store: StoreDetail) {
 
 @Preview(showBackground = true)
 @Composable
-fun StoreDetailScreenPreview() {
-    DetailStoreScreen(store = mockStoreDetail())
+fun GroceryDetailScreenPreview() {
+    DetailGroceryScreen(grocery = mockGroceryDetail())
 }
